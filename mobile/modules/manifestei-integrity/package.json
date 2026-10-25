@@ -1,0 +1,8 @@
+{
+  "name": "manifestei-integrity",
+  "version": "1.0.0",
+  "description": "App Attest (iOS), Play Integrity Standard API (Android) e localização com detecção de simulação",
+  "main": "index.ts",
+  "private": true,
+  "license": "UNLICENSED"
+}

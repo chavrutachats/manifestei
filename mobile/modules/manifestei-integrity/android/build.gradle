@@ -1,0 +1,25 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'expo.modules.manifesteiintegrity'
+version = '1.0.0'
+
+android {
+  namespace "expo.modules.manifesteiintegrity"
+  defaultConfig {
+    versionCode 1
+    versionName "1.0.0"
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  // Play Integrity API — requisições "standard" (StandardIntegrityManager)
+  implementation 'com.google.android.play:integrity:1.4.0'
+  // FusedLocationProviderClient.getCurrentLocation(CurrentLocationRequest)
+  implementation 'com.google.android.gms:play-services-location:21.3.0'
+}

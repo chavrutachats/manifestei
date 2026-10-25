@@ -1,0 +1,25 @@
+# Ambiente local: PostgreSQL 16 + PostGIS 3.4 e Redis 7.
+#   docker compose up -d
+#   cd backend && cp .env.example .env && npm ci && npm run migrate && npm run dev
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: manifestei
+      POSTGRES_PASSWORD: manifestei
+      POSTGRES_DB: manifestei
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U manifestei"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    # sem persistência em disco: desafios e limites são efêmeros por natureza
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports: ["6379:6379"]
+
+volumes:
+  pgdata:
